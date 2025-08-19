@@ -6,6 +6,10 @@
 
 x402 is an open‑source protocol that turns the dormant HTTP `402 Payment Required` status code into a fully‑featured, on‑chain payment layer for APIs, websites, and autonomous agents.
 
+**Is x402 a CDP Product?**
+
+_No._ While Coinbase Developer Platform provides tooling and are the creators of the standard, it is an open protocol (Apache-2.0 license) and you don't need any Coinbase products to use it. We look forward to further clarifying this distinction and making x402 a credibly neutral payment standard.&#x20;
+
 #### Why not use traditional payment rails or API keys?
 
 Traditional rails require credit‑card networks, user accounts, and multi‑step UI flows.\
