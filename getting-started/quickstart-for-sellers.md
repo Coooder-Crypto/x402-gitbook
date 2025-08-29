@@ -6,9 +6,7 @@ This guide walks you through integrating with **x402** to enable payments for yo
 
 Before you begin, ensure you have:
 
-* A crypto wallet to receive funds (any EVM-compatible wallet, e.g., CDP Wallet)
-* (optional) A [Coinbase Developer Platform](https://cdp.coinbase.com) (CDP) account and API Keys
-  * Required for mainnet use until other facilitators go live
+* A crypto wallet to receive funds (any EVM-compatible wallet)
 * [Node.js](https://nodejs.org/en) and npm (or Python and pip) installed
 * An existing API or server
 

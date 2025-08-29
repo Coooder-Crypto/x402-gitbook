@@ -6,7 +6,7 @@ This guide walks you through how to use **x402** to interact with services that 
 
 Before you begin, ensure you have:
 
-* A crypto wallet with USDC (any EVM-compatible wallet, e.g., [CDP Wallet](https://docs.cdp.coinbase.com/wallet-api-v2/docs/welcome))
+* A crypto wallet with USDC (any EVM-compatible wallet)
 * [Node.js](https://nodejs.org/en) and npm, or Python and pip
 * A service that requires payment via x402
 
@@ -41,7 +41,7 @@ pip install x402
 
 #### **Node.js**
 
-Create a wallet client using CDP's Wallet API or [viem](https://viem.sh/):&#x20;
+Create a wallet client using a tool like [viem](https://viem.sh/):&#x20;
 
 {% tabs %}
 {% tab title="Viem" %}
@@ -62,44 +62,11 @@ import { baseSepolia } from "viem/chains";
 const account = privateKeyToAccount("0xYourPrivateKey"); // we recommend using an environment variable for this
 ```
 {% endtab %}
-
-{% tab title="CDP Wallet API" %}
-First, create an account at [cdp.coinbase.com](https://cdp.coinbase.com/) and get the following API keys from the portal to store as environment variables:
-
-```
-# store in .env or using the command `export <name>="secret-info"`
-CDP_API_KEY_ID=your-api-key-id
-CDP_API_KEY_SECRET=your-api-key-secret
-CDP_WALLET_SECRET=your-wallet-secret
-```
-
-Then, install the required packages:
-
-```bash
-npm install @coinbase/cdp-sdk dotenv
-```
-
-Finally, instantiate the CDP client as suggested by the [Wallet API Quickstart](https://docs.cdp.coinbase.com/wallet-api/v2/introduction/quickstart):
-
-```typescript
-import { CdpClient } from "@coinbase/cdp-sdk";
-import { createWalletClient, http } from "viem";
-import { baseSepolia } from "viem/chains";
-import dotenv from "dotenv";
-
-dotenv.config()
-
-const cdp = new CdpClient();
-const cdpAccount = await cdp.evm.createAccount();
-const account = toAccount(cdpAccount);
-
-```
-{% endtab %}
 {% endtabs %}
 
 #### **Python**
 
-Create a wallet client using CDP's Wallet API or [eth-account](https://github.com/ethereum/eth-account):
+Create a wallet client using a tool like [eth-account](https://github.com/ethereum/eth-account):
 
 {% tabs %}
 {% tab title="eth-account" %}
@@ -115,36 +82,6 @@ Then, instantiate the wallet account:
 from eth_account import Account
 
 account = Account.from_key("your_private_key") # we recommend using an environment variable fo
-```
-{% endtab %}
-
-{% tab title="CDP Wallet API" %}
-First, create an account at [cdp.coinbase.com](https://cdp.coinbase.com/) and get the following API keys from the portal to store as environment variables:
-
-```
-# store in .env or using the command `export <name>="secret-info"`
-CDP_API_KEY_ID=your-api-key-id
-CDP_API_KEY_SECRET=your-api-key-secret
-CDP_WALLET_SECRET=your-wallet-secret
-```
-
-Then, install the required packages:
-
-```
-pip install cdp dotenv
-```
-
-Finally, instantiate the CDP client as suggested by the [Wallet API Quickstart](https://docs.cdp.coinbase.com/wallet-api/v2/introduction/quickstart):
-
-```python
-import asyncio
-from cdp import CdpClient
-from dotenv import load_dotenv
-
-load_dotenv()
-
-cdp = CdpClient()
-account = await cdp.evm.create_account()
 ```
 {% endtab %}
 {% endtabs %}

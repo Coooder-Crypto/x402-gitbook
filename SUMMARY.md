@@ -2,7 +2,6 @@
 
 * [Welcome to x402](README.md)
 * [x402 Landing Page](https://x402.org)
-* [CDP's x402 Docs (AI enabled, recommended)](https://docs.cdp.coinbase.com/x402/docs/welcome)
 * [FAQ](faq.md)
 
 ## Getting Started
