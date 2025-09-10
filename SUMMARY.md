@@ -2,6 +2,7 @@
 
 * [Welcome to x402](README.md)
 * [x402 Landing Page](https://x402.org)
+* [GitBook Repo (open for contributions)](https://github.com/murrlincoln/x402-gitbook)
 * [FAQ](faq.md)
 
 ## Getting Started
