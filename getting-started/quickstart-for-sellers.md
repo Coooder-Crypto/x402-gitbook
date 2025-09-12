@@ -46,6 +46,19 @@ npm install x402-hono
 npm install @coinbase/x402 # for the mainnet facilitator
 ```
 {% endtab %}
+
+{% tab title="MCP (Unofficial)" %}
+This [community package](https://github.com/ethanniser/x402-mcp) showcases how you can use MCP (Model Context Protocol) with x402. We're working on enshrining an official MCP spec in x402 soon.
+
+Install the [x402-mcp package](https://www.npmjs.com/package/x402-mcp):
+
+```bash
+npm install x402-mcp
+npm install @coinbase/x402 # for the mainnet facilitator
+```
+
+Full example in the repo [here](https://github.com/ethanniser/x402-mcp/tree/main/apps/example).
+{% endtab %}
 {% endtabs %}
 
 #### Python
@@ -178,6 +191,68 @@ serve({
   fetch: app.fetch,
   port: 3000
 });
+```
+{% endtab %}
+
+{% tab title="MCP (Unofficial)" %}
+This creates an MCP server endpoint that exposes paid tools to AI agents. The tools automatically handle x402 payment requirements when called.
+
+```javascript
+import { createPaidMcpHandler } from "x402-mcp";
+import z from "zod";
+// import { facilitator } from "@coinbase/x402"; // For mainnet
+
+const handler = createPaidMcpHandler(
+  (server) => {
+    server.paidTool(
+      "get_random_number",
+      "Get a random number between two numbers",
+      { price: 0.001 }, // Price in USD
+      {
+        min: z.number().int().describe("Minimum value"),
+        max: z.number().int().describe("Maximum value"),
+      },
+      {},
+      async (args) => {
+        const randomNumber =
+          Math.floor(Math.random() * (args.max - args.min + 1)) + args.min;
+        return {
+          content: [{ type: "text", text: randomNumber.toString() }],
+        };
+      }
+    );
+    
+    // Add more paid tools as needed
+    server.paidTool(
+      "premium_feature",
+      "Access premium functionality",
+      { price: 0.01 },
+      {
+        input: z.string(),
+      },
+      {},
+      async (args) => {
+        // Your premium feature logic
+        return {
+          content: [{ type: "text", text: "Premium result" }],
+        };
+      }
+    );
+  },
+  {
+    serverInfo: {
+      name: "your-mcp-server",
+      version: "1.0.0",
+    },
+  },
+  {
+    recipient: "0xYourAddress", // Your receiving wallet address
+    facilitator,
+    // network: "base-sepolia", // For testnet, "base" for mainnet
+  }
+);
+
+export { handler as GET, handler as POST };
 ```
 {% endtab %}
 

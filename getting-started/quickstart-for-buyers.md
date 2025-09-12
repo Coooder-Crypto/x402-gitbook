@@ -11,18 +11,28 @@ Before you begin, ensure you have:
 * A service that requires payment via x402
 
 **Note**\
-We have pre-configured [examples available in our repo](https://github.com/coinbase/x402/tree/main/examples), including for MCP.
+We have pre-configured [examples available in our repo](https://github.com/coinbase/x402/tree/main/examples), including examples for fetch, Axios, and MCP.
 
 ### 1. Install Dependencies
 
 {% tabs %}
 {% tab title="Node.js" %}
+**HTTP Clients (Axios/Fetch)**  
 Install [x402-axios](https://www.npmjs.com/package/x402-axios) or [x402-fetch](https://www.npmjs.com/package/x402-fetch):
 
 ```bash
 npm install x402-axios
 # or
 npm install x402-fetch
+```
+
+**MCP (Unofficial)**  
+This [community package](https://github.com/ethanniser/x402-mcp) showcases how AI agents can use Model Context Protocol (MCP) with x402. We're working on enshrining an official MCP spec in x402 soon.
+
+Install the required packages for MCP support:
+
+```bash
+npm install x402-mcp ai @modelcontextprotocol/sdk
 ```
 {% endtab %}
 
@@ -150,6 +160,48 @@ api
     console.error(error.response?.data?.error);
   });
 ```
+{% endtab %}
+
+{% tab title="x402-mcp" %}
+**x402-mcp** provides payment handling for MCP clients, allowing AI agents to automatically pay for tools. [Full example here](https://github.com/ethanniser/x402-mcp/tree/main/apps/example)
+
+```typescript
+import { convertToModelMessages, stepCountIs, streamText } from "ai";
+import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
+import { experimental_createMCPClient as createMCPClient } from "ai";
+import { withPayment } from "x402-mcp";
+
+// Create MCP client with payment capabilities
+const mcpClient = await createMCPClient({
+  transport: new StreamableHTTPClientTransport(mcpServerUrl), // URL of your MCP server
+}).then((client) => withPayment(client, { 
+  account, // Your wallet account from step 2
+  network: "base" // or "base-sepolia" for testnet
+}));
+
+// Get available tools (both paid and free)
+const tools = await mcpClient.tools();
+
+// Use the tools with your AI model
+const result = streamText({
+  model: "gpt-4", // or any AI model
+  tools,
+  messages: convertToModelMessages(messages),
+  stopWhen: stepCountIs(5), // Limit tool calls for safety
+  onFinish: async () => {
+    await mcpClient.close();
+  },
+  system: "ALWAYS prompt the user to confirm before authorizing payments",
+});
+```
+
+**Features:**
+- Automatically detects when MCP tools require payment
+- Handles x402 payment flow transparently
+- Supports both paid and free tools from the same server
+- Integrates seamlessly with Vercel AI SDK
+
+**Note:** The `withPayment` wrapper adds payment capabilities to any MCP client. When a tool call requires payment, it will automatically handle the x402 payment flow using your configured wallet.
 {% endtab %}
 {% endtabs %}
 
