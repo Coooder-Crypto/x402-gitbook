@@ -12,13 +12,13 @@ Network support in x402 depends on which facilitator you use. Here are the curre
 
 #### x402.org Facilitator
 
-* **Supports**: Base Sepolia
+* **Supports**: Base Sepolia, Solana Testnet
 * **Notes**: Recommended for testing and development. This is the default facilitator in the x402 packages and requires no setup.
 * **URL**: https://x402.org/facilitator
 
 #### CDP's x402 Facilitator
 
-* **Supports**: Base, Base Sepolia
+* **Supports**: Base, Base Sepolia, Solana, Solana Testnet
 * **Notes**: Production-ready for mainnet payments with KYT/OFAC compliance checks. Can also be used for testing on Base Sepolia. Requires CDP API keys. Uses facilitator object instead of facilitator URL.
 * **Requirements**: CDP account and API keys from [cdp.coinbase.com](https://cdp.coinbase.com), see Quickstart for Sellers: Running on Mainnet for more details.
 
@@ -101,12 +101,12 @@ The EIP-3009 standard is essential for x402 because it enables:
 
 ### Quick Reference
 
-| Facilitator     | Networks Supported      | Production Ready | Requirements    |
-| --------------- | ----------------------- | ---------------- | --------------- |
-| x402.org        | base-sepolia            | ❌ Testnet only   | None            |
-| CDP Facilitator | base, base-sepolia      | ✅                | CDP API keys    |
-| x402.rs         | base-sepolia, base, xdc | ✅                | None            |
-| Self-hosted     | Any EVM network         | ✅                | Technical setup |
+| Facilitator     | Networks Supported                      | Production Ready | Requirements    |
+| --------------- | --------------------------------------- | ---------------- | --------------- |
+| x402.org        | base-sepolia, solana-testnet            | ❌ Testnet only  | None            |
+| CDP Facilitator | base, base-sepolia, solana, solana-test | ✅               | CDP API keys    |
+| x402.rs         | base-sepolia, base, xdc                 | ✅               | None            |
+| Self-hosted     | Any EVM network                         | ✅               | Technical setup |
 
 **Note**: All facilitators support any EIP-3009 compatible token on their supported networks.
 

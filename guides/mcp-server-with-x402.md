@@ -18,7 +18,7 @@ This lets you (or your agent) access paid APIs programmatically, with no manual 
 
 * Node.js (v20 or higher)
 * An x402-compatible server to connect to (for this demo, we'll use the [sample express server with weather data](https://github.com/coinbase/x402/tree/main/examples/typescript/servers/express) from the x402 repo, or any external x402 API)
-* An Ethereum wallet with USDC (on Base Sepolia or Base Mainnet)
+* An Ethereum wallet with USDC (on Base Sepolia or Base Mainnet), or a Solana wallet with USDC (on Solana Testnet or Solana Mainnet)
 * [Claude Desktop with MCP support](https://claude.ai/download)
 
 ***

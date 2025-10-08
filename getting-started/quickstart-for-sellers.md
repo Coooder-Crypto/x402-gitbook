@@ -69,7 +69,7 @@ Full example in the repo [here](https://github.com/ethanniser/x402-mcp/tree/main
 
 ```bash
 pip install x402
-pip install cdp # for the mainnet facilitator 
+pip install cdp # for the mainnet facilitator
 ```
 {% endtab %}
 {% endtabs %}
@@ -78,7 +78,7 @@ pip install cdp # for the mainnet facilitator
 
 Integrate the payment middleware into your application. You will need to provide:
 
-* The Facilitator URL or facilitator object. For testing, use `https://x402.org/facilitator` which works on Base Sepolia.
+* The Facilitator URL or facilitator object. For testing, use `https://x402.org/facilitator` which works on Base Sepolia and Solana testnet.
   * For more information on running in production on mainnet, check out [CDP's Quickstart for Sellers](https://docs.cdp.coinbase.com/x402/docs/quickstart-sellers)
 * The routes you want to protect.
 * Your receiving wallet address.
@@ -94,7 +94,7 @@ import { paymentMiddleware, Network } from "x402-express";
 const app = express();
 
 app.use(paymentMiddleware(
-  "0xYourAddress", // your receiving wallet address 
+  "0xYourAddress", // your receiving wallet address
   {  // Route configurations for protected endpoints
       "GET /weather": {
         // USDC amount in dollars
@@ -103,7 +103,7 @@ app.use(paymentMiddleware(
       },
     },
   {
-    url: "https://x402.org/facilitator", // Facilitator URL for Base Sepolia testnet. 
+    url: "https://x402.org/facilitator", // Facilitator URL for Base Sepolia testnet.
   }
 ));
 
@@ -131,7 +131,7 @@ import { paymentMiddleware, Network } from 'x402-next';
 
 // Configure the payment middleware
 export const middleware = paymentMiddleware(
-  "0xYourAddress", // your receiving wallet address 
+  "0xYourAddress", // your receiving wallet address
   {  // Route configurations for protected endpoints
     '/protected': {
       price: '$0.01',
@@ -142,7 +142,7 @@ export const middleware = paymentMiddleware(
     },
   }
   {
-    url: "https://x402.org/facilitator", // Facilitator URL for Base Sepolia testnet. 
+    url: "https://x402.org/facilitator", // Facilitator URL for Base Sepolia testnet.
   }
 );
 
@@ -167,7 +167,7 @@ const app = new Hono();
 
 // Configure the payment middleware
 app.use(paymentMiddleware(
-  "0xYourAddress", // your receiving wallet address 
+  "0xYourAddress", // your receiving wallet address
   {  // Route configurations for protected endpoints
     "/protected-route": {
       price: "$0.10",
@@ -178,7 +178,7 @@ app.use(paymentMiddleware(
     }
   },
   {
-    url: "https://x402.org/facilitator", // Facilitator URL for Base Sepolia testnet. 
+    url: "https://x402.org/facilitator", // Facilitator URL for Base Sepolia testnet.
   }
 ));
 
@@ -221,7 +221,7 @@ const handler = createPaidMcpHandler(
         };
       }
     );
-    
+
     // Add more paid tools as needed
     server.paidTool(
       "premium_feature",
