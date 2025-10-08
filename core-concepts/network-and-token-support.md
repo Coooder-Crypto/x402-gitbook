@@ -103,8 +103,8 @@ The EIP-3009 standard is essential for x402 because it enables:
 
 | Facilitator     | Networks Supported                      | Production Ready | Requirements    |
 | --------------- | --------------------------------------- | ---------------- | --------------- |
-| x402.org        | base-sepolia, solana-testnet            | ❌ Testnet only  | None            |
-| CDP Facilitator | base, base-sepolia, solana, solana-test | ✅               | CDP API keys    |
+| x402.org        | base-sepolia, solana-devnet            | ❌ Testnet only  | None            |
+| CDP Facilitator | base, base-sepolia, solana, solana-devnet | ✅               | CDP API keys    |
 | x402.rs         | base-sepolia, base, xdc                 | ✅               | None            |
 | Self-hosted     | Any EVM network                         | ✅               | Technical setup |
 

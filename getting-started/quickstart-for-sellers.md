@@ -78,7 +78,7 @@ pip install cdp # for the mainnet facilitator
 
 Integrate the payment middleware into your application. You will need to provide:
 
-* The Facilitator URL or facilitator object. For testing, use `https://x402.org/facilitator` which works on Base Sepolia and Solana testnet.
+* The Facilitator URL or facilitator object. For testing, use `https://x402.org/facilitator` which works on Base Sepolia and Solana devnet.
   * For more information on running in production on mainnet, check out [CDP's Quickstart for Sellers](https://docs.cdp.coinbase.com/x402/docs/quickstart-sellers)
 * The routes you want to protect.
 * Your receiving wallet address.
