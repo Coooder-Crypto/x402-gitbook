@@ -63,7 +63,7 @@ Yes. x402 handles the _payment execution_. You can still meter usage, aggregate 
 | ------------   | ----- | -------- | ----------- |
 | Base           | USDC  | fee-free | **Mainnet** |
 | Base Sepolia   | USDC  | fee-free | **Testnet** |
-| Solana         | USDC  | fee-free | **Mainnet** |
+| Solana         | SPL Tokens  | fee-free | **Mainnet** |
 | Solana Devnet | SPL Tokens  | fee-free | **Testnet** |
 
 * Gas paid on chain; Coinbase's x402 facilitator adds **zero** facilitator fee.
