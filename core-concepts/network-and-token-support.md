@@ -40,11 +40,14 @@ Additional facilitators may be available from external providers. Check the [x40
 
 ### Token Support
 
-x402 supports any ERC-20 token that implements the EIP-3009 standard.
+x402 supports tokens on both EVM and Solana networks:
 
-**Important**: Facilitators support networks, not specific tokens - any EIP-3009 compatible token works on any facilitator.
+* **EVM**: Any ERC-20 token that implements the EIP-3009 standard
+* **Solana**: Any SPL token
 
-#### EIP-3009 Requirement
+**Important**: Facilitators support networks, not specific tokens — any EIP-3009 compatible token works on EVM networks, and any SPL token works on Solana, for the facilitators that support those networks.
+
+#### EVM: EIP-3009 Requirement
 
 Tokens must implement the `transferWithAuthorization` function from the EIP-3009 standard. This enables:
 
@@ -85,6 +88,10 @@ These values are used in the `eip712` nested object when configuring TokenAmount
 }
 ```
 
+#### Solana: SPL Tokens
+
+On Solana, x402 supports all SPL tokens. When using facilitators that support Solana or Solana Devnet, payments can be made in any SPL token, including USDC (SPL). No EIP-712 configuration is required on Solana.
+
 #### USDC - The Default Token
 
 * **Status**: Supported by default across all networks
@@ -108,7 +115,7 @@ The EIP-3009 standard is essential for x402 because it enables:
 | x402.rs         | base-sepolia, base, xdc                 | ✅               | None            |
 | Self-hosted     | Any EVM network                         | ✅               | Technical setup |
 
-**Note**: All facilitators support any EIP-3009 compatible token on their supported networks.
+**Note**: On EVM networks, facilitators support any EIP-3009 compatible token; on Solana, facilitators support any SPL token.
 
 ### Adding Support for New Networks
 
@@ -194,7 +201,7 @@ Video Guide: [Adding EVM Chains to x402](https://x.com/jaycoolh/status/192085155
 The x402 ecosystem is actively expanding network support. Planned additions include:
 
 * Additional L2 networks
-* Non-EVM chain support (Solana in development)
+* Additional non-EVM chain support
 * Cross-chain payment capabilities
 
 ### Getting Help
