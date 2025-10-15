@@ -17,7 +17,7 @@ We have pre-configured [examples available in our repo](https://github.com/coinb
 
 {% tabs %}
 {% tab title="Node.js" %}
-**HTTP Clients (Axios/Fetch)**  
+**HTTP Clients (Axios/Fetch)**
 Install [x402-axios](https://www.npmjs.com/package/x402-axios) or [x402-fetch](https://www.npmjs.com/package/x402-fetch):
 
 ```bash
@@ -26,7 +26,7 @@ npm install x402-axios
 npm install x402-fetch
 ```
 
-**MCP (Unofficial)**  
+**MCP (Unofficial)**
 This [community package](https://github.com/ethanniser/x402-mcp) showcases how AI agents can use Model Context Protocol (MCP) with x402. We're working on enshrining an official MCP spec in x402 soon.
 
 Install the required packages for MCP support:
@@ -49,19 +49,17 @@ pip install x402
 
 ### 2. Create a Wallet Client
 
-#### **Node.js**
-
-Create a wallet client using a tool like [viem](https://viem.sh/):&#x20;
+#### Create a Wallet Client
 
 {% tabs %}
-{% tab title="Viem" %}
-First, install the required packages:
+{% tab title="Node.js (viem)" %}
+Install the required package:
 
 ```bash
 npm install viem
 ```
 
-Then, instantiate the wallet account:
+Then instantiate the wallet account:
 
 ```typescript
 import { createWalletClient, http } from "viem";
@@ -72,29 +70,37 @@ import { baseSepolia } from "viem/chains";
 const account = privateKeyToAccount("0xYourPrivateKey"); // we recommend using an environment variable for this
 ```
 {% endtab %}
-{% endtabs %}
 
-#### **Python**
+{% tab title="Python (eth-account)" %}
+Install the required package:
 
-Create a wallet client using a tool like [eth-account](https://github.com/ethereum/eth-account):
-
-{% tabs %}
-{% tab title="eth-account" %}
-First, install the required packages:
-
-```
+```bash
 pip install eth_account
 ```
 
-Then, instantiate the wallet account:
+Then instantiate the wallet account:
 
 ```python
 from eth_account import Account
 
-account = Account.from_key("your_private_key") # we recommend using an environment variable fo
+account = Account.from_key("your_private_key") # we recommend using an environment variable for this
 ```
 {% endtab %}
 {% endtabs %}
+
+#### Solana (SVM)
+
+Use [SolanaKit](https://www.solanakit.com/) to instantiate a signer:
+
+```typescript
+import { createKeyPairSignerFromBytes } from "@solana/kit";
+import { base58 } from "@scure/base";
+
+// 64-byte base58 secret key (private + public)
+const signer = await createKeyPairSignerFromBytes(
+  base58.decode(process.env.SOLANA_PRIVATE_KEY!)
+);
+```
 
 ### 3. Make Paid Requests Automatically
 
@@ -174,7 +180,7 @@ import { withPayment } from "x402-mcp";
 // Create MCP client with payment capabilities
 const mcpClient = await createMCPClient({
   transport: new StreamableHTTPClientTransport(mcpServerUrl), // URL of your MCP server
-}).then((client) => withPayment(client, { 
+}).then((client) => withPayment(client, {
   account, // Your wallet account from step 2
   network: "base" // or "base-sepolia" for testnet
 }));
