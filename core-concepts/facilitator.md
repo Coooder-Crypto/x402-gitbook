@@ -37,7 +37,7 @@ While it is possible to implement verification and settlement locally, using a f
 
 * CDP's facilitator offers fee-free USDC settlement on Base mainnet
 
-2. PayAI [hosts a facilitator](https://facilitator.payai.network) on Solana, Base, Polygon, and more. More info & docs at https://facilitator.payai.network.
+2. PayAI [hosts a facilitator](https://facilitator.payai.network) on Solana, Base, Polygon, and more. More info & docs at https://docs.payai.network/x402.
 
 
 ### Interaction Flow
