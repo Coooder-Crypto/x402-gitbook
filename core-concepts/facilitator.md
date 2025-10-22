@@ -33,11 +33,12 @@ While it is possible to implement verification and settlement locally, using a f
 
 ### Live Facilitators
 
-Currently, CDP hosts the only facilitator live on Base mainnet. For more information about getting started, see the [CDP Docs](https://docs.cdp.coinbase.com/x402/docs/welcome).
+1. Currently, CDP hosts a facilitator live on Base mainnet. For more information about getting started, see the [CDP Docs](https://docs.cdp.coinbase.com/x402/docs/welcome).
 
 * CDP's facilitator offers fee-free USDC settlement on Base mainnet
 
-As more facilitators go live, we will include them here.
+2. PayAI [hosts a facilitator](https://facilitator.payai.network) on Solana, Base, Polygon, and more. More info & docs at https://facilitator.payai.network.
+
 
 ### Interaction Flow
 
