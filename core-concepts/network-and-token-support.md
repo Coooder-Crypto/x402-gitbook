@@ -28,6 +28,12 @@ Network support in x402 depends on which facilitator you use. Here are the curre
 * **Notes**: Rust-based facilitator operated by the x402 community.
 * **URL**: https://facilitator.x402.rs
 
+#### PayAI Facilitator
+
+* **Supports**: Solana, Base, Polygon, Avalanche, Sei, Peaq, Iotex and all of their testnets.
+* **Notes**: Production-ready for mainnet payments. Supports all tokens on Solana, supports EIP-3009 tokens on EVM-Based chains.
+* **URL**: https://facilitator.payai.network
+
 #### Self-Hosted Facilitators
 
 * **Supports**: Any EVM network
@@ -43,9 +49,9 @@ Additional facilitators may be available from external providers. Check the [x40
 x402 supports tokens on both EVM and Solana networks:
 
 * **EVM**: Any ERC-20 token that implements the EIP-3009 standard
-* **Solana**: Any SPL token
+* **Solana**: Any SPL or token-2022 token
 
-**Important**: Facilitators support networks, not specific tokens — any EIP-3009 compatible token works on EVM networks, and any SPL token works on Solana, for the facilitators that support those networks.
+**Important**: Facilitators support networks, not specific tokens — any EIP-3009 compatible token works on EVM networks, and any SPL/token-2022 token works on Solana, for the facilitators that support those networks.
 
 #### EVM: EIP-3009 Requirement
 
@@ -88,9 +94,9 @@ These values are used in the `eip712` nested object when configuring TokenAmount
 }
 ```
 
-#### Solana: SPL Tokens
+#### Solana: SPL Tokens & Token 2022 Tokens
 
-On Solana, x402 supports all SPL tokens. When using facilitators that support Solana or Solana Devnet, payments can be made in any SPL token, including USDC (SPL). No EIP-712 configuration is required on Solana.
+On Solana, x402 supports all SPL tokens and Token 2022 tokens. When using facilitators that support Solana or Solana Devnet, payments can be made in any SPL/token-2022 token, including USDC (SPL). No EIP-712 configuration is required on Solana.
 
 #### USDC - The Default Token
 
@@ -113,9 +119,10 @@ The EIP-3009 standard is essential for x402 because it enables:
 | x402.org        | base-sepolia, solana-devnet            | ❌ Testnet only  | None            |
 | CDP Facilitator | base, base-sepolia, solana, solana-devnet | ✅               | CDP API keys    |
 | x402.rs         | base-sepolia, base, xdc                 | ✅               | None            |
+| PayAI Facilitator | solana, solana-devnet, base, base-sepolia, polygon, polygon-amoy, avalanche, avalanche-fuji, sei, sei-testnet, peaq, iotex | ✅ | None |
 | Self-hosted     | Any EVM network                         | ✅               | Technical setup |
 
-**Note**: On EVM networks, facilitators support any EIP-3009 compatible token; on Solana, facilitators support any SPL token.
+**Note**: On EVM networks, facilitators support any EIP-3009 compatible token; on Solana, facilitators support any SPL/Token-2022 token.
 
 ### Adding Support for New Networks
 
